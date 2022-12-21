@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Omegastore.Ecommerce.Application.Dto\Omegastore.Ecommerce.Application.Dto.csproj" />
+    <ProjectReference Include="..\Omegastore.Ecommerce.Shared.Common\Omegastore.Ecommerce.Shared.Common.csproj" />
+  </ItemGroup>
+
+</Project>

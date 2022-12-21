@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Omegastore.Ecommerce.Domain.Entity\Omegastore.Ecommerce.Domain.Entity.csproj" />
+    <ProjectReference Include="..\Omegastore.Ecommerce.Domain.Interfaces\Omegastore.Ecommerce.Domain.Interfaces.csproj" />
+    <ProjectReference Include="..\Omegastore.Ecommerce.Infrastructure.Interfaces\Omegastore.Ecommerce.Infrastructure.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>

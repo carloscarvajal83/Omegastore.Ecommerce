@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>D:\Cursos\Arquitectura1\Omegastore.Ecommerce\Omegastore.Ecommerce.Services.WebApi\Omegastore.Ecommerce.Services.WebApi.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>D:\Cursos\Arquitectura1\Omegastore.Ecommerce\Omegastore.Ecommerce.Services.WebApi\Omegastore.Ecommerce.Services.WebApi.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <!--<PackageReference Include="Microsoft.AspNetCore.App" />-->
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.0" />
+    <!--<PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />-->
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.14.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.2.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.2.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.2.3" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.14.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Omegastore.Ecommerce.Application.Dto\Omegastore.Ecommerce.Application.Dto.csproj" />
+    <ProjectReference Include="..\Omegastore.Ecommerce.Application.Interfaces\Omegastore.Ecommerce.Application.Interfaces.csproj" />
+    <ProjectReference Include="..\Omegastore.Ecommerce.Application.Main\Omegastore.Ecommerce.Application.Main.csproj" />
+    <ProjectReference Include="..\Omegastore.Ecommerce.Domain.Core\Omegastore.Ecommerce.Domain.Core.csproj" />
+    <ProjectReference Include="..\Omegastore.Ecommerce.Domain.Entity\Omegastore.Ecommerce.Domain.Entity.csproj" />
+    <ProjectReference Include="..\Omegastore.Ecommerce.Domain.Interfaces\Omegastore.Ecommerce.Domain.Interfaces.csproj" />
+    <ProjectReference Include="..\Omegastore.Ecommerce.Infraestructure.Data\Omegastore.Ecommerce.Infrastructure.Data.csproj" />
+    <ProjectReference Include="..\Omegastore.Ecommerce.Infrastructure.Interfaces\Omegastore.Ecommerce.Infrastructure.Interfaces.csproj" />
+    <ProjectReference Include="..\Omegastore.Ecommerce.Infrastructure.Repository\Omegastore.Ecommerce.Infrastructure.Repository.csproj" />
+    <ProjectReference Include="..\Omegastore.Ecommerce.Shared.Common\Omegastore.Ecommerce.Shared.Common.csproj" />
+    <ProjectReference Include="..\Omegastore.Ecommerce.Shared.Logging\Omegastore.Ecommerce.Shared.Logging.csproj" />
+    <ProjectReference Include="..\Omegastore.Ecommerce.Shared.Mapper\Omegastore.Ecommerce.Shared.Mapper.csproj" />
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
+</Project>
