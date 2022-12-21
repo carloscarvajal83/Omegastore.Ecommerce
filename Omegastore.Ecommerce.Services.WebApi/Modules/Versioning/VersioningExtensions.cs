@@ -11,7 +11,7 @@ namespace Omegastore.Ecommerce.Services.WebApi.Modules.Versioning
                 v.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1, 0);
                 v.AssumeDefaultVersionWhenUnspecified = true;
                 v.ReportApiVersions = true;
-                v.ApiVersionReader = new QueryStringApiVersionReader("api-version");
+                v.ApiVersionReader = new HeaderApiVersionReader("x-version");
             });
             services.AddVersionedApiExplorer(options => {
                 options.GroupNameFormat = "'v'VVV";
