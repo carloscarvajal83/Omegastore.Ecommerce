@@ -11,11 +11,12 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace Omegastore.Ecommerce.Services.WebApi.Controllers
+namespace Omegastore.Ecommerce.Services.WebApi.Controllers.v1
 {
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
+    [ApiVersion("1.0")]
     public class UserController : Controller
     {
         private readonly IUserApplication _userApplication;
@@ -29,26 +30,30 @@ namespace Omegastore.Ecommerce.Services.WebApi.Controllers
 
         [AllowAnonymous]
         [HttpPost("Authenticate")]
-        public IActionResult Authenticate([FromBody]UserDto userDto)
+        public IActionResult Authenticate([FromBody] UserDto userDto)
         {
             var response = _userApplication.Authenticate(userDto.UserName, userDto.Password);
-            if (response.Success) {
+            if (response.Success)
+            {
                 if (response.Data != null)
                 {
                     response.Data.Token = BuildToken(response);
                     return Ok(response);
                 }
-                else {
+                else
+                {
                     return NotFound(response);
                 }
             }
             return BadRequest(response);
         }
 
-        private string BuildToken(Response<UserDto> userDto) {
+        private string BuildToken(Response<UserDto> userDto)
+        {
             var tokenHandler = new JwtSecurityTokenHandler();
             byte[] key = Encoding.ASCII.GetBytes(_appSettings.Secret);
-            var tokenDescriptor = new SecurityTokenDescriptor {
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
                 Subject = new ClaimsIdentity(new Claim[] {
                     new Claim(ClaimTypes.Name, userDto.Data.UserId.ToString())
                 }),

@@ -4,26 +4,31 @@ using Microsoft.AspNetCore.Mvc;
 using Omegastore.Ecommerce.Application.Dto;
 using Omegastore.Ecommerce.Application.Interfaces;
 
-namespace Omegastore.Ecommerce.Services.WebApi.Controllers
+namespace Omegastore.Ecommerce.Services.WebApi.Controllers.v1
 {
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
+    [ApiVersion("1.0")]
     public class CustomerController : Controller
     {
         private readonly ICustomerApplication _customerApplication;
 
-        public CustomerController(ICustomerApplication customerApplication) {
+        public CustomerController(ICustomerApplication customerApplication)
+        {
             _customerApplication = customerApplication;
         }
 
         [HttpPost("Insert")]
-        public IActionResult Insert([FromBody]CustomerDto customerDto) {
-            if (customerDto == null) {
+        public IActionResult Insert([FromBody] CustomerDto customerDto)
+        {
+            if (customerDto == null)
+            {
                 return BadRequest();
             }
             var response = _customerApplication.Insert(customerDto);
-            if (!response.Success) {
+            if (!response.Success)
+            {
                 return BadRequest(response.Message);
             }
             return Ok(response);

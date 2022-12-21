@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,26 +13,9 @@ namespace Omegastore.Ecommerce.Services.WebApi.Modules.Swagger
     public static class SwaggerExtensions
     {
         public static IServiceCollection AddSwagger(this IServiceCollection services) {
+            services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Version = "v1",
-                    Title = "OmegraStore Tech Services API Market",
-                    Description = "A simple ASP.NET Core Web Api",
-                    TermsOfService = new Uri("http://omegastore.com/terms"),
-                    Contact = new OpenApiContact
-                    {
-                        Name = "Charles Spark",
-                        Email = "adminservices@omegastore.co",
-                        Url = new Uri("http://omegastore.com/contact")
-                    },
-                    License = new OpenApiLicense
-                    {
-                        Name = "User under LICX",
-                        Url = new Uri("http://omegastore.com/license")
-                    }
-                });
                 // Set the comments path for the Swagger JSON and UI
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
