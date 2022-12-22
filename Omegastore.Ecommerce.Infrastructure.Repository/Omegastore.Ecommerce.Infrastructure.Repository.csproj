@@ -11,7 +11,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Omegastore.Ecommerce.Infraestructure.Data\Omegastore.Ecommerce.Infrastructure.Data.csproj" />
     <ProjectReference Include="..\Omegastore.Ecommerce.Infrastructure.Interfaces\Omegastore.Ecommerce.Infrastructure.Interfaces.csproj" />
-    <ProjectReference Include="..\Omegastore.Ecommerce.Shared.Common\Omegastore.Ecommerce.Shared.Common.csproj" />
   </ItemGroup>
 
 </Project>

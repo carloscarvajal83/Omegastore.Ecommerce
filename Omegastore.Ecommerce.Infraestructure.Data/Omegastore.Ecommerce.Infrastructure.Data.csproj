@@ -9,8 +9,4 @@
     <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Omegastore.Ecommerce.Shared.Common\Omegastore.Ecommerce.Shared.Common.csproj" />
-  </ItemGroup>
-
 </Project>

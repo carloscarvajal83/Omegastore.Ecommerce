@@ -1,26 +1,26 @@
 ﻿using System;
 using Omegastore.Ecommerce.Domain.Entity;
 using Omegastore.Ecommerce.Infrastructure.Interfaces;
-using Omegastore.Ecommerce.Shared.Common;
 using Dapper;
 using System.Data;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using Omegastore.Ecommerce.Infrastructure.Data;
 
 namespace Omegastore.Ecommerce.Infrastructure.Repository
 {
     public class CustomerRepository : ICustomerRepository
     {
-        private readonly IConnectionFactory _connectionFactory;
+        private readonly DapperContext _context;
 
-        public CustomerRepository(IConnectionFactory connectionFactory)
+        public CustomerRepository(DapperContext context)
         {
-            _connectionFactory = connectionFactory;
+            _context = context;
         }
 
         public bool Insert(Customer customer)
         {
-            using (var connection = _connectionFactory.GetConnection)
+            using (var connection = _context.CreateConnection())
             {
                 var query = "CustomersInsert";
                 var parameters = new DynamicParameters();
@@ -43,7 +43,7 @@ namespace Omegastore.Ecommerce.Infrastructure.Repository
 
         public async Task<bool> InsertAsync(Customer customer)
         {
-            using (var connection = _connectionFactory.GetConnection)
+            using (var connection = _context.CreateConnection())
             {
                 var query = "CustomersInsert";
                 var parameters = new DynamicParameters();
@@ -66,7 +66,7 @@ namespace Omegastore.Ecommerce.Infrastructure.Repository
 
         public bool Update(Customer customer)
         {
-            using (var connection = _connectionFactory.GetConnection)
+            using (var connection = _context.CreateConnection())
             {
                 var query = "CustomersUpdate";
                 var parameters = new DynamicParameters();
@@ -89,7 +89,7 @@ namespace Omegastore.Ecommerce.Infrastructure.Repository
 
         public async Task<bool> UpdateAsync(Customer customer)
         {
-            using (var connection = _connectionFactory.GetConnection)
+            using (var connection = _context.CreateConnection())
             {
                 var query = "CustomersUpdate";
                 var parameters = new DynamicParameters();
@@ -112,7 +112,7 @@ namespace Omegastore.Ecommerce.Infrastructure.Repository
 
         public bool Delete(string customerId)
         {
-            using (var connection = _connectionFactory.GetConnection)
+            using (var connection = _context.CreateConnection())
             {
                 var query = "CustomersDelete";
                 var parameters = new DynamicParameters();
@@ -125,7 +125,7 @@ namespace Omegastore.Ecommerce.Infrastructure.Repository
 
         public async Task<bool> DeleteAsync(string customerId)
         {
-            using (var connection = _connectionFactory.GetConnection)
+            using (var connection = _context.CreateConnection())
             {
                 var query = "CustomersDelete";
                 var parameters = new DynamicParameters();
@@ -138,7 +138,7 @@ namespace Omegastore.Ecommerce.Infrastructure.Repository
 
         public Customer Get(string customerId)
         {
-            using (var connection = _connectionFactory.GetConnection)
+            using (var connection = _context.CreateConnection())
             {
                 var query = "CustomersGetById";
                 var parameters = new DynamicParameters();
@@ -151,7 +151,7 @@ namespace Omegastore.Ecommerce.Infrastructure.Repository
 
         public async Task<Customer> GetAsync(string customerId)
         {
-            using (var connection = _connectionFactory.GetConnection)
+            using (var connection = _context.CreateConnection())
             {
                 var query = "CustomersGetById";
                 var parameters = new DynamicParameters();
@@ -164,7 +164,7 @@ namespace Omegastore.Ecommerce.Infrastructure.Repository
 
         public IEnumerable<Customer> GetAll()
         {
-            using (var connection = _connectionFactory.GetConnection)
+            using (var connection = _context.CreateConnection())
             {
                 var query = "CustomersList";
                 
@@ -175,7 +175,7 @@ namespace Omegastore.Ecommerce.Infrastructure.Repository
 
         public async Task<IEnumerable<Customer>> GetAllAsync()
         {
-            using (var connection = _connectionFactory.GetConnection)
+            using (var connection = _context.CreateConnection() )
             {
                 var query = "CustomersList";
 
