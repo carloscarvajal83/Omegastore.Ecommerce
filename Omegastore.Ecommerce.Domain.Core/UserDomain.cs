@@ -6,15 +6,15 @@ namespace Omegastore.Ecommerce.Domain.Core
 {
     public class UserDomain : IUserDomain
     {
-        private readonly IUserRepository _userRepository;
-        public UserDomain(IUserRepository userRepository)
+        private readonly IUnitOfWork _unitOfWork;
+        public UserDomain(IUnitOfWork unitOfWork)
         {
-            _userRepository = userRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public User Authenticate(string username, string password)
         {
-            return _userRepository.Authenticate(username, password);
+            return _unitOfWork.User.Authenticate(username, password);
         }
     }
 }

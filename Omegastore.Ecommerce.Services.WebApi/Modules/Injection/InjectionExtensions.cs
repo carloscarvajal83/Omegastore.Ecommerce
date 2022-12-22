@@ -25,6 +25,7 @@ namespace Omegastore.Ecommerce.Services.WebApi.Modules.Injection
             services.AddScoped<IUserDomain, UserDomain>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped(typeof(IAppLogger<>), typeof(LoggerAdpater<>));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             return services;
         }
     }
